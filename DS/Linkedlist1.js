@@ -7,10 +7,12 @@ class Node {
 class Linkedlist {
     constructor() {
         this.head = null;
+        this.size = 0;
     }
-    insert(data, next = null) {
-        this.head = new Node(data, null)
+    insertFirst(data, next = null) {
+        this.head = new Node(data)
+        this.size++;
     }
-
+    insertLast
 
 }

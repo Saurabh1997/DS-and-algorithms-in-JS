@@ -21,18 +21,17 @@ class Linkedlist {
         }
         //insert last node
     insertLast(data) {
-        let node = new Node(data);
         let current;
         //if empty, point node
         if (!this.head) {
-            this.head = node
+            this.head = new Node(data)
         } else {
             current = this.head
 
             while (current.next) {
                 current = current.next;
             }
-            current.next = node
+            current.next = new Node(data)
         }
         this.size += 1;
         // let current = this.head;
@@ -46,12 +45,12 @@ class Linkedlist {
     //insert at index
     insertAt(data, index) {
         //if index out of bound
-        if (index > this.size) {
-            return;
+        if (index > this.size && index > 0) {
+            return null;
         }
         // if first index
         if (index == 0) {
-            this.head = new Node(data, this.head);
+            this.head = new Node(data, this.head); // same logic as that of insertFirst
             this.size += 1;
         }
         let node = new Node(data);
@@ -92,20 +91,48 @@ class Linkedlist {
     }
 
     //remove at index
+    removeAt(index) {
 
+        if (index > 0 && index > this.size) {
+            return null;
+        } else {
+            let current = this.head;
+            let previous;
+            let count = 0;
+            //remove first
+            if (index == 0) {
+                this.head = current.next;
+                this.size = this.size - 1;
+            } else {
+                while (count < index) {
+                    count++;
+                    previous = current; //node before the (to be removed) node
+                    current = current.next; // to be removed node
+                }
+                previous.next = current.next;
+
+            }
+        }
+        this.size--;
+
+    }
 
     //clear list
-
+    clearList() {
+        this.head = null
+        this.size = null
+    }
 }
 
 
 const li = new Linkedlist();
-li.insertFirst(100);
+li.insertLast(100);
 li.insertLast(200)
 li.insertLast(300)
 li.insertLast(400)
-li.insertAt(10, 3);
+li.removeAt(2);
 //const n1 = li.insertFirst(200);
 //li.insertFirst(100);
+//li.clearList();
 li.printListData();
 //li.getAt(1);
