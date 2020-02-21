@@ -75,7 +75,8 @@ class Stack {
             return "array is empty";
         }
         var result = this.storage[this.size - 1];
-        this.storage.splice(this.size - 1, 1);
+        this.storage.splice(this.size - 1, 1); // removes the element (from, no. of item of remove)
+        // delete this.storage for deleting array in object
         this.size--;
     }
     peek = () => {
@@ -91,5 +92,6 @@ class Stack {
 const mySt = new Stack();
 mySt.push(10);
 mySt.push(5);
+mySt.push(9);
 mySt.pop()
 mySt.printStack();
