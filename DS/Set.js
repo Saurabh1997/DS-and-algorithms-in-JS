@@ -12,7 +12,7 @@ function mySet() {
         return (collection.indexOf(element) == -1) // will output true if not exists
     }
     this.getValues = () => {
-        return console.log(collection)
+        return collection
     }
     this.addElement = (element) => {
         if(this.hasnot(element)){
@@ -37,34 +37,65 @@ function mySet() {
         var unionSet = new Set();
         
         var firstSet = this.getValues();  // 2,4,6
-        console.log(firstSet)
         var secondSet = otherSet.getValues(); // 4,6,8
         firstSet.forEach((element) => {
-            if(this.hasnot(element)) {
-                unionSet.push(element)  // will push elements from only first array
-            }
+                unionSet.add(element)  // will push elements from only first array          
            });
-        secondSet.forEach((element) => {
-            if(this.hasnot(element)) {  // will look for elements already  entered 
-                unionSet.push(element)  //push elements from second array
-            }
+        secondSet.forEach((element) => {                                     
+                unionSet.add(element) //will look for elements already entered
+                // push elements from second array         
         })
-        return true
+        return unionSet
     }
 
-
-    interSection = (otherSet) => {
-        var unionSet = new Set();
+//intersection
+    this.interSection = (otherSet) => {
+        var interSet = new Set();
+        var firstSet = this.getValues();
+        var secondSet = otherSet.getValues();
+        firstSet.forEach((element) => {
+           if(!otherSet.hasnot(element)){
+            interSet.add(element)
+           }
+        })
+        return interSet
     }
-  //  removeElement = ()
+  // difference
+
+  this.difference = (otherSet) => {
+    var diffSet = new Set();
+    var firstSet = this.getValues();
+    var otherSet = this.getValues();
+
+    firstSet.forEach((element)=> {// firstSet - secondSet = first set - intersection
+        if(otherSet.hasnot(element)){
+            diffSet.add(element);
+        }
+    })
+    return diffSet
+  }
+
+//if set is subset of different set
+
+  this.subset = () => {
+
+  }
 
 
 }
-const nSet = new mySet();
-nSet.addElement(5);
-nSet.addElement(9);
-nSet.addElement(3);
-nSet.addElement(2);
-nSet.addElement(6);
-var arr = [2,4,5,6]
-nSet.union(arr)
+const nSet1 = new mySet();
+const nSet2 = new mySet();
+nSet1.addElement(5);
+nSet1.addElement(9);
+nSet1.addElement(3);
+nSet1.addElement(2);
+nSet2.addElement(6);   
+nSet2.addElement(5); //same
+nSet2.addElement(9); //same
+nSet2.addElement(3); //same
+console.log(nSet1.getValues())
+console.log(nSet2.getValues())
+
+console.log(nSet1.union(nSet2))
+console.log(nSet1.interSection(nSet2))
+console.log(nSet1.difference(nSet2))
