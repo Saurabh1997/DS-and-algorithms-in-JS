@@ -65,7 +65,6 @@ function mySet() {
   this.difference = (otherSet) => {
     var diffSet = new Set();
     var firstSet = this.getValues();
-    var otherSet = this.getValues();
 
     firstSet.forEach((element)=> {// firstSet - secondSet = first set - intersection
         if(otherSet.hasnot(element)){
@@ -77,14 +76,21 @@ function mySet() {
 
 //if set is subset of different set
 
-  this.subset = () => {
+  this.subset = (otherSet) => {
+    var firstSet = this.getValues();
+    return firstSet.every((element) => { //executes for every element of first array, but doesn't  
+       return  !(otherSet.hasnot(element))// affect original array
+    })
 
-  }
+    }
+
+  
 
 
 }
-const nSet1 = new mySet();
-const nSet2 = new mySet();
+var nSet1 = new mySet();
+var nSet2 = new mySet();
+var nSet3 = new mySet();
 nSet1.addElement(5);
 nSet1.addElement(9);
 nSet1.addElement(3);
@@ -93,9 +99,14 @@ nSet2.addElement(6);
 nSet2.addElement(5); //same
 nSet2.addElement(9); //same
 nSet2.addElement(3); //same
+nSet3.addElement(5);
+nSet3.addElement(1);
 console.log(nSet1.getValues())
 console.log(nSet2.getValues())
-
+console.log(nSet3.getValues())
 console.log(nSet1.union(nSet2))
 console.log(nSet1.interSection(nSet2))
 console.log(nSet1.difference(nSet2))
+
+
+console.log(nSet3.subset(nSet1))
