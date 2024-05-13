@@ -21,3 +21,4 @@ const getGCDWithoutRecursive = (value1, value2) => {
 };
 
 console.log(" result ", getGCDWithoutRecursive(60, 36));
+// Time complexity - O (log phi (min (a , b )))
