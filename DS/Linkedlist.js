@@ -15,10 +15,10 @@ class Linkedlist {
   }
 
   //insert first Node
-  insertFirst(data) {
+  insertFirst = (data) => {
     this.head = new Node(data, this.head);
     this.size += 1;
-  }
+  };
   //insert last node
   insertLast(data) {
     let current;
