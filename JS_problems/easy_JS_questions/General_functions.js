@@ -25,5 +25,5 @@ module.exports = {
     return false;
   },
 
-  // console.log(ifexistsin2D(arr, 2, 3));
+  // console.log(ifexistsin2D(arr, 2, 5));
 };

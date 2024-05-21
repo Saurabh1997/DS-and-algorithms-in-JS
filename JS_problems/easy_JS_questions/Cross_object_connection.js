@@ -1,8 +1,4 @@
 // Setup
-
-
-
-
 const obj1 = {
   panimage: "saurabh",
   bankstatement: "patil",
